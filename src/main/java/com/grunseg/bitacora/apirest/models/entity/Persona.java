@@ -13,7 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
@@ -23,6 +22,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -40,7 +40,7 @@ public class Persona implements Serializable {
 	@Column(name = "razon_social")
 	private String razonSocial;
 
-	//@Column(unique = true)
+	// @Column(unique = true)
 	@NotEmpty(message = "no puede estar vacio")
 	private String cedula;
 
@@ -66,7 +66,7 @@ public class Persona implements Serializable {
 
 	@NotEmpty(message = "no puede estar vacio")
 	@Email(message = "No es una dirección de correo válida")
-	//@Column(unique = true)
+	// @Column(unique = true)
 	private String email;
 
 	@NotNull(message = "debe estar seleccionada alguna opción")
@@ -91,6 +91,10 @@ public class Persona implements Serializable {
 	@JsonIgnoreProperties(value = { "persona", "hibernateLazyInitializer", "handler" }, allowSetters = true)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "persona", cascade = CascadeType.ALL)
 	private List<Evento> eventos;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "empresa_id")
+	private Empresa empresa;
 
 	public Persona() {
 		this.vehiculos = new ArrayList<VehiculoPersona>();
@@ -245,6 +249,14 @@ public class Persona implements Serializable {
 
 	public void setEventos(List<Evento> eventos) {
 		this.eventos = eventos;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }

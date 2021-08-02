@@ -94,6 +94,10 @@ public class Bitacora implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bitacora", cascade = CascadeType.ALL)
 	private List<AcompaniantesVisitante> acompaniantes;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "empresa_id")
+	private Empresa empresa;
+
 	@PrePersist
 	public void prePersist() {
 		fechaCreacion = new Date();
@@ -214,6 +218,14 @@ public class Bitacora implements Serializable {
 
 	public void setAcompaniantes(List<AcompaniantesVisitante> acompaniantes) {
 		this.acompaniantes = acompaniantes;
+	}
+
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
 	}
 
 }

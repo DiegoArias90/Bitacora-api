@@ -2,6 +2,8 @@ package com.grunseg.bitacora.apirest.models.services;
 
 import java.util.List;
 
+import com.grunseg.bitacora.apirest.dto.AntecedentesInfoDTO;
+import com.grunseg.bitacora.apirest.dto.VehiculoInfoDTO;
 import com.grunseg.bitacora.apirest.models.entity.AcompaniantesVisitante;
 import com.grunseg.bitacora.apirest.models.entity.Bitacora;
 import com.grunseg.bitacora.apirest.models.entity.Motivo;
@@ -24,7 +26,6 @@ public interface IBitacoraService {
 
 	public List<Motivo> findAllMotivos();
 	/* Bitacora */
-	
 
 	/* Visitantes */
 	public List<Visitante> findAllVisitantes();
@@ -45,10 +46,10 @@ public interface IBitacoraService {
 
 	public void deleteVehiculoVisitanteById(Long id);
 	/* Vehiculos Visitantes */
-	
-	/*Acompaniantes*/
+
+	/* Acompaniantes */
 	public AcompaniantesVisitante saveAcompaniante(AcompaniantesVisitante acompaniante);
-	/*Acompaniantes*/
+	/* Acompaniantes */
 
 	public List<Persona> findByCedulaPersona(String cedula);
 
@@ -57,5 +58,10 @@ public interface IBitacoraService {
 	public List<Visitante> findByCedulaVisitante(String cedula);
 
 	public List<VehiculoVisitante> findByPlacaVehiculoVisitante(String placa);
+
+	public VehiculoInfoDTO searchVehiculoByExternalService(String placa);
+
+	public List<AntecedentesInfoDTO> searchAntecedentesByExternalService(String numeroIdentificacion,
+			String tipoIdentificacion);
 
 }
