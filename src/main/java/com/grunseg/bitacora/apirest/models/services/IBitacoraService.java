@@ -1,5 +1,6 @@
 package com.grunseg.bitacora.apirest.models.services;
 
+import java.util.Date;
 import java.util.List;
 
 import com.grunseg.bitacora.apirest.dto.AntecedentesInfoDTO;
@@ -17,6 +18,13 @@ public interface IBitacoraService {
 	public List<Bitacora> findAllBitacoraOrdenada();
 
 	public List<Bitacora> findAll();
+
+	public List<Bitacora> findByFechaEntrada(Date fechaInicio, Date fechaFin, Long idEmpresa);
+
+	public List<Bitacora> findByFechaEntradaAndIdPropietario(Date fechaInicio, Date fechaFin, Long idEmpresa,
+			Long idPropietario);
+
+	public List<Bitacora> findByFechaEntradaAndPlaca(Date fechaInicio, Date fechaFin, Long idEmpresa, String placa);
 
 	public Bitacora findById(Long id);
 

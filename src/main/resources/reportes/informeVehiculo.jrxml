@@ -60,6 +60,7 @@
 	<parameter name="logo" class="java.lang.String"/>
 	<parameter name="titulo" class="java.lang.String"/>
 	<parameter name="subtitulo" class="java.lang.String"/>
+	<parameter name="subtitulo2" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -72,7 +73,7 @@
 	<field name="visitante" class="java.lang.String"/>
 	<field name="residente" class="java.lang.String"/>
 	<title>
-		<band height="133" splitType="Stretch">
+		<band height="147" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="85" width="758" height="25" uuid="cfa5b252-6c39-4c04-886c-6acb1070f0d0">
 					<property name="local_mesure_unitheight" value="pixel"/>
@@ -107,6 +108,13 @@
 				<reportElement x="0" y="2" width="460" height="80" uuid="fd376a31-d3de-4607-8acd-ef0999ae99cf"/>
 				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
 			</image>
+			<textField>
+				<reportElement x="0" y="127" width="758" height="15" uuid="efd526cb-b9ff-4321-97d0-8154f3ba2606"/>
+				<textElement textAlignment="Center">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{subtitulo2}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<columnHeader>

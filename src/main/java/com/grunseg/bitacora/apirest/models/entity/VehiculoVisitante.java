@@ -112,4 +112,9 @@ public class VehiculoVisitante implements Serializable {
 		this.fechaCreacion = fechaCreacion;
 	}
 
+	@Override
+	public String toString() {
+		return "placa=" + placa + ", modelo=" + modelo + ", marca=" + marca + ", color=" + color;
+	}
+
 }

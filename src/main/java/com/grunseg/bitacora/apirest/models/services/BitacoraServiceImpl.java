@@ -1,6 +1,7 @@
 package com.grunseg.bitacora.apirest.models.services;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -63,6 +64,22 @@ public class BitacoraServiceImpl implements IBitacoraService {
 	@Transactional(readOnly = true)
 	public List<Bitacora> findAll() {
 		return bitacoraDao.findAll();
+	}
+
+	@Override
+	public List<Bitacora> findByFechaEntrada(Date fechaInicio, Date fechaFin, Long idEmpresa) {
+		return bitacoraDao.getAllBetweenDates(fechaInicio, fechaFin, idEmpresa);
+	}
+
+	@Override
+	public List<Bitacora> findByFechaEntradaAndIdPropietario(Date fechaInicio, Date fechaFin, Long idEmpresa,
+			Long idPropietario) {
+		return bitacoraDao.getAllBetweenDatesAndIdPropietario(fechaInicio, fechaFin, idEmpresa, idPropietario);
+	}
+
+	@Override
+	public List<Bitacora> findByFechaEntradaAndPlaca(Date fechaInicio, Date fechaFin, Long idEmpresa, String placa) {
+		return bitacoraDao.getAllBetweenDatesAndPlacaVehiculo(fechaInicio, fechaFin, idEmpresa, placa);
 	}
 
 	@Override
